@@ -1,6 +1,5 @@
-﻿backend:
-  name: github
-  repo: nancy-adam/almudathir-septic
+backend:
+  name: git-gateway
   branch: main
 
 media_folder: "images"
@@ -40,3 +39,4 @@ collections:
       - label: "السعر"
         name: "price"
         widget: "string"
+        required: false
