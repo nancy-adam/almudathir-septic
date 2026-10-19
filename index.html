@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
@@ -11,6 +11,9 @@
     <meta name="theme-color" content="#0756a5">
 
     <title>شركة المدثر | شفط البيارات وتسليك المجاري بحائل</title>
+
+    <!-- Netlify Identity -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
     <link rel="stylesheet" href="style.css">
 
@@ -156,6 +159,7 @@
             </div>
 
             <div class="card truck-card">
+
                 <img src="images/truck2.jpg"
                      alt="سيارة شفط البيارات التابعة لشركة المدثر"
                      loading="lazy">
@@ -216,6 +220,19 @@
             جميع الحقوق محفوظة &copy; 2026 - شركة المدثر
         </p>
     </footer>
+
+    <!-- Netlify Identity: تحويل المستخدم بعد تسجيل الدخول -->
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", function (user) {
+                if (!user) {
+                    window.netlifyIdentity.on("login", function () {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
