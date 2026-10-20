@@ -1,0 +1,43 @@
+﻿
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+locale: "ar"
+
+collections:
+  - name: "settings"
+    label: "إعدادات الموقع"
+    files:
+      - name: "company"
+        label: "بيانات الشركة"
+        file: "content/company.json"
+        fields:
+          - label: "رقم الهاتف"
+            name: "phone"
+            widget: "string"
+          - label: "رقم واتساب"
+            name: "whatsapp"
+            widget: "string"
+
+  - name: "services"
+    label: "الخدمات والأسعار"
+    folder: "content/services"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    fields:
+      - label: "اسم الخدمة"
+        name: "title"
+        widget: "string"
+      - label: "وصف الخدمة"
+        name: "description"
+        widget: "text"
+      - label: "السعر"
+        name: "price"
+        widget: "string"
+        required: false

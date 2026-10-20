@@ -73,7 +73,6 @@
 </body>
 </html>-->
 
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -108,9 +107,22 @@
                 اتصل بنا أو أرسل رسالة عبر واتساب.
             </p>
 
-            <p>
+            <!-- رقم الهاتف الأول -->
+            <p id="phone1-container">
                 <i class="fas fa-phone"></i>
-                <strong>رقم الهاتف:</strong> <span id="phone-display">0504158234</span>
+                <strong>رقم الهاتف الأول:</strong> <span id="phone-display">0504158234</span>
+            </p>
+
+            <!-- رقم الهاتف الثاني (يظهر فقط عند إضافته من لوحة التحكم) -->
+            <p id="phone2-container" style="display: none;">
+                <i class="fas fa-phone"></i>
+                <strong>رقم الهاتف الثاني:</strong> <span id="phone2-display"></span>
+            </p>
+
+            <!-- ساعات العمل (تظهر فقط عند إضافتها من لوحة التحكم) -->
+            <p id="hours-container" style="display: none;">
+                <i class="fas fa-clock"></i>
+                <strong>ساعات العمل:</strong> <span id="hours-display"></span>
             </p>
 
             <div class="hero-btns">
@@ -146,36 +158,57 @@
         <p>© 2026 شركة المدثر - جميع الحقوق محفوظة</p>
     </footer>
 
-    <!-- سكريبت قراءة البيانات تلقائياً من لوحة التحكم -->
+    <!-- سكريبت قراءة البيانات تلقائياً من لوحة التحكم Decap CMS -->
     <script>
-      fetch('/content/company.json')
-        .then(response => {
-          if (!response.ok) throw new Error('File not found');
-          return response.json();
-        })
-        .then(data => {
-          if (data.phone) {
-            const phoneDisplay = document.getElementById('phone-display');
-            if (phoneDisplay) phoneDisplay.textContent = data.phone;
+        fetch('/content/company.json')
+            .then(response => {
+                if (!response.ok) throw new Error('File not found');
+                return response.json();
+            })
+            .then(data => {
+                // 1. رقم الهاتف الأول
+                if (data.phone) {
+                    const phoneDisplay = document.getElementById('phone-display');
+                    if (phoneDisplay) phoneDisplay.textContent = data.phone;
 
-            const phoneLink = document.getElementById('phone-link');
-            if (phoneLink) phoneLink.href = 'tel:' + data.phone;
+                    const phoneLink = document.getElementById('phone-link');
+                    if (phoneLink) phoneLink.href = 'tel:' + data.phone;
 
-            const stickyPhone = document.getElementById('sticky-phone');
-            if (stickyPhone) stickyPhone.href = 'tel:' + data.phone;
-          }
+                    const stickyPhone = document.getElementById('sticky-phone');
+                    if (stickyPhone) stickyPhone.href = 'tel:' + data.phone;
+                }
+                // 2. رقم الهاتف الثاني (يظهر تلقائياً إذا أضيف من اللوحة)
+                if (data.phone2 && data.phone2.trim() !== "") {
+                    const phone2Display = document.getElementById('phone2-display');
+                    const phone2Container = document.getElementById('phone2-container');
+                    if (phone2Display && phone2Container) {
+                        phone2Display.textContent = data.phone2;
+                        phone2Container.style.display = 'block';
+                    }
+                }
 
-          if (data.whatsapp) {
-            const cleanWa = data.whatsapp.replace(/[^0-9]/g, '');
+                // 3. ساعات العمل (تظهر تلقائياً إذا أضيفت من اللوحة)
+                if (data.working_hours && data.working_hours.trim() !== "") {
+                    const hoursDisplay = document.getElementById('hours-display');
+                    const hoursContainer = document.getElementById('hours-container');
+                    if (hoursDisplay && hoursContainer) {
+                        hoursDisplay.textContent = data.working_hours;
+                        hoursContainer.style.display = 'block';
+                    }
+                }
 
-            const waLink = document.getElementById('wa-link');
-            if (waLink) waLink.href = 'https://wa.me/' + cleanWa;
+                // 4. رقم الواتساب
+                if (data.whatsapp) {
+                    const cleanWa = data.whatsapp.replace(/[^0-9]/g, '');
 
-            const stickyWa = document.getElementById('sticky-wa');
-            if (stickyWa) stickyWa.href = 'https://wa.me/' + cleanWa;
-          }
-        })
-        .catch(err => console.log('Error loading company data:', err));
+                    const waLink = document.getElementById('wa-link');
+                    if (waLink) waLink.href = 'https://wa.me/' + cleanWa;
+
+                    const stickyWa = document.getElementById('sticky-wa');
+                    if (stickyWa) stickyWa.href = 'https://wa.me/' + cleanWa;
+                }
+            })
+            .catch(err => console.log('Error loading company data:', err));
     </script>
 
 </body>
