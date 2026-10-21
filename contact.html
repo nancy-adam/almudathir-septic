@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +6,7 @@
     <meta name="description" content="تواصل مع شركة المدثر لشفط البيارات وتسليك المجاري في حائل">
     <title>اتصل بنا | شركة المدثر</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="extra.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -23,18 +24,16 @@
     </header>
 
     <main class="container">
-        <h1 class="page-title">اتصل بنا</h1>
+        <h1 class="page-title" data-bind="contact.page_title">اتصل بنا</h1>
 
         <section class="card">
-            <h2>يسعدنا تواصلك معنا</h2>
-            <p>
-                للاستفسار عن خدمات شفط البيارات وتسليك المجاري في حائل،
-                اتصل بنا أو أرسل رسالة عبر واتساب.
-            </p>
+            <h2 data-bind="contact.intro_title">يسعدنا تواصلك معنا</h2>
+            <p class="pre" data-bind="contact.intro_text">للاستفسار عن خدمات شفط البيارات وتسليك المجاري في حائل،
+اتصل بنا أو أرسل رسالة عبر واتساب.</p>
 
             <p>
                 <i class="fas fa-phone"></i>
-                <strong>رقم الهاتف:</strong> 0504158234
+                <strong>رقم الهاتف:</strong> <span data-phone>0504158234</span>
             </p>
 
             <div class="hero-btns">
@@ -46,14 +45,14 @@
                     <i class="fab fa-whatsapp"></i> راسلنا واتساب
                 </a>
             </div>
+
+            <div class="extra-contacts" data-list="company.extra_contacts" data-render="contacts"></div>
         </section>
 
         <section class="card">
-            <h2>منطقة الخدمة</h2>
-            <p>
-                حائل والمناطق المحيطة بها، حسب توفر الخدمة في موقعك.
-                يُرجى التواصل معنا للتأكد من التغطية.
-            </p>
+            <h2 data-bind="contact.area_title">منطقة الخدمة</h2>
+            <p class="pre" data-bind="contact.area_text">حائل والمناطق المحيطة بها، حسب توفر الخدمة في موقعك.
+يُرجى التواصل معنا للتأكد من التغطية.</p>
         </section>
     </main>
 
@@ -67,8 +66,10 @@
     </div>
 
     <footer>
-        <p>© 2026 شركة المدثر - جميع الحقوق محفوظة</p>
+        <p data-bind="company.footer_text">© 2026 شركة المدثر - جميع الحقوق محفوظة</p>
     </footer>
+
+    <script src="site-data.js" defer></script>
 
 </body>
 </html>
