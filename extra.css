@@ -1,0 +1,74 @@
+/* إضافات تحسين الشكل - بتتحمّل بعد style.css ومش بتغيّر فيه */
+
+/* حركة خفيفة عند المرور على الكروت */
+.card {
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(18, 48, 71, .15);
+}
+
+/* عناوين الكروت الصغيرة (المميزات والخطوات) */
+.card:not(.truck-card) h3 {
+    color: #176b78;
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+/* مسافة تحت عنوان صورة السيارة */
+.truck-card h3 {
+    padding-bottom: 18px;
+}
+
+/* الكارت الوحيد في الصف (مثل المناطق) ياخد العرض كله */
+.card-grid > .card:only-child {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+/* يحافظ على الأسطر الجديدة في النصوص اللي بتتكتب من لوحة التحكم */
+.pre {
+    white-space: pre-line;
+}
+
+/* شارة السعر */
+.price {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #fff4d6;
+    color: #7a5600;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+/* وضوح التركيز بالكيبورد */
+a:focus-visible,
+.btn:focus-visible,
+.s-btn:focus-visible {
+    outline: 3px solid #f6c453;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .card { transition: none; }
+    .card:hover { transform: none; }
+}
+
+/* أرقام الاتصال الإضافية */
+.extra-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 12px;
+}
+.extra-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
