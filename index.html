@@ -16,9 +16,10 @@
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="extra.css">
 
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -33,18 +34,10 @@
             </a>
 
             <ul class="nav-links">
-                <li>
-                    <a href="index.html" class="active">الرئيسية</a>
-                </li>
-                <li>
-                    <a href="about.html">من نحن</a>
-                </li>
-                <li>
-                    <a href="services.html">خدماتنا</a>
-                </li>
-                <li>
-                    <a href="contact.html">اتصل بنا</a>
-                </li>
+                <li><a href="index.html" class="active">الرئيسية</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="services.html">خدماتنا</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
             </ul>
 
         </div>
@@ -53,9 +46,9 @@
     <!-- القسم الرئيسي -->
     <header class="hero">
 
-        <h1>شركة المدثر لشفط البيارات وتسليك المجاري</h1>
+        <h1 data-bind="company.hero_title">شركة المدثر لشفط البيارات وتسليك المجاري</h1>
 
-        <p>
+        <p data-bind="company.hero_text">
             خدمات شفط البيارات وتسليك المجاري في حائل والمناطق المجاورة.
             تواصل معنا هاتفيًا للاستفسار عن الخدمة.
         </p>
@@ -82,32 +75,55 @@
     <!-- مميزات الخدمة -->
     <section class="container">
 
-        <h2 class="page-title">لماذا تختار شركة المدثر؟</h2>
+        <h2 class="page-title" data-bind="home.features_title">لماذا تختار شركة المدثر؟</h2>
 
-        <div class="card-grid">
+        <div class="card-grid" data-list="home.features" data-render="cards">
 
             <div class="card">
                 <i class="fas fa-truck-monster"></i>
                 <h3>سيارات شفط</h3>
-                <p>
-                    سيارات مخصصة لأعمال شفط البيارات والصرف الصحي.
-                </p>
+                <p class="pre">سيارات مخصصة لأعمال شفط البيارات والصرف الصحي.</p>
             </div>
 
             <div class="card">
                 <i class="fas fa-clock"></i>
                 <h3>سرعة الاستجابة</h3>
-                <p>
-                    تواصل معنا للاستفسار عن أقرب موعد متاح للخدمة.
-                </p>
+                <p class="pre">تواصل معنا للاستفسار عن أقرب موعد متاح للخدمة.</p>
             </div>
 
             <div class="card">
                 <i class="fas fa-tags"></i>
                 <h3>أسعار مناسبة</h3>
-                <p>
-                    اتصل بنا لمعرفة تكلفة الخدمة حسب الموقع ونوع الطلب.
-                </p>
+                <p class="pre">اتصل بنا لمعرفة تكلفة الخدمة حسب الموقع ونوع الطلب.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- كيف تطلب الخدمة -->
+    <section class="container">
+
+        <h2 class="page-title" data-bind="home.steps_title">كيف تطلب الخدمة؟</h2>
+
+        <div class="card-grid" data-list="home.steps" data-render="cards">
+
+            <div class="card">
+                <i class="fas fa-phone-volume"></i>
+                <h3>1. تواصل معنا</h3>
+                <p class="pre">اتصل بنا أو راسلنا على واتساب واشرح لنا الطلب.</p>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-location-dot"></i>
+                <h3>2. حدد الموقع والموعد</h3>
+                <p class="pre">نتفق على موقعك والموعد المناسب والتكلفة.</p>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-circle-check"></i>
+                <h3>3. نصل وننفذ الخدمة</h3>
+                <p class="pre">يصل فريقنا بالسيارة المخصصة وننفذ العمل.</p>
             </div>
 
         </div>
@@ -115,9 +131,7 @@
     </section>
 
     <!-- مناطق الخدمة -->
-    <section class="container">
-
-        <h2 class="page-title">مناطق الخدمة والتغطية</h2>
+    <section class="container"><h2 class="page-title">مناطق الخدمة والتغطية</h2>
 
         <div class="card-grid">
 
@@ -125,15 +139,13 @@
 
                 <i class="fas fa-map-marker-alt"></i>
 
-                <h3>المناطق التي نخدمها</h3>
+                <h3 data-bind="home.areas_heading">المناطق التي نخدمها</h3>
 
-                <p>
+                <p data-bind="home.areas_text">
                     حائل • الغزالة • الشنان • بقعاء • الأجفر • التربة
                 </p>
 
-                <p>
-                    يُرجى الاتصال للتأكد من توفر الخدمة في منطقتك.
-                </p>
+                <p class="pre" data-bind="home.areas_note">يُرجى الاتصال للتأكد من توفر الخدمة في منطقتك.</p>
 
             </div>
 
@@ -144,28 +156,29 @@
     <!-- صور سيارات الشفط -->
     <section class="container">
 
-        <h2 class="page-title">سيارات الشفط لدينا</h2>
+        <h2 class="page-title" data-bind="home.trucks_title">سيارات الشفط لدينا</h2>
 
-        <div class="card-grid">
+        <div class="card-grid" data-list="home.trucks" data-render="trucks">
 
             <div class="card truck-card">
-
                 <img src="images/truck1.jpg"
                      alt="سيارة شفط الصرف الصحي التابعة لشركة المدثر"
                      loading="lazy">
-
                 <h3>سيارة شفط الصرف الصحي</h3>
-
             </div>
 
             <div class="card truck-card">
-
                 <img src="images/truck2.jpg"
                      alt="سيارة شفط البيارات التابعة لشركة المدثر"
                      loading="lazy">
-
                 <h3>سيارة شفط البيارات</h3>
+            </div>
 
+            <div class="card truck-card">
+                <img src="images/truck3.jpg"
+                     alt="سيارة تابعة لشركة المدثر"
+                     loading="lazy">
+                <h3>إحدى سيارات الشركة</h3>
             </div>
 
         </div>
@@ -179,11 +192,9 @@
 
             <i class="fas fa-headset"></i>
 
-            <h2>هل تحتاج إلى خدمة شفط البيارات؟</h2>
+            <h2 data-bind="home.cta_title">هل تحتاج إلى خدمة شفط البيارات؟</h2>
 
-            <p>
-                تواصل مع شركة المدثر للاستفسار عن الخدمة والتكلفة.
-            </p>
+            <p class="pre" data-bind="home.cta_text">تواصل مع شركة المدثر للاستفسار عن الخدمة والتكلفة.</p>
 
             <br>
 
@@ -216,10 +227,12 @@
 
     <!-- نهاية الصفحة -->
     <footer>
-        <p>
+        <p data-bind="company.footer_text">
             جميع الحقوق محفوظة &copy; 2026 - شركة المدثر
         </p>
     </footer>
+
+    <script src="site-data.js" defer></script>
 
     <!-- Netlify Identity: تحويل المستخدم بعد تسجيل الدخول -->
     <script>
