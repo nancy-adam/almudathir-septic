@@ -7,9 +7,9 @@
   "footer_text": "© 2026 شركة المدثر - جميع الحقوق محفوظة",
   "extra_contacts": [
     {
-      "type": "call",
+      "type": "both",
       "number": "01006296445",
-      "label": "المدثر "
+      "label": "رقم اضافي "
     }
   ]
 }
