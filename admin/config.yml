@@ -8,35 +8,315 @@ public_folder: "/images"
 locale: "ar"
 
 collections:
-  - name: "settings"
-    label: "إعدادات الموقع"
+  - name: "site"
+    label: "محتوى الموقع"
     files:
+
       - name: "company"
-        label: "بيانات الشركة"
+        label: "بيانات الشركة والصفحة الرئيسية (الهاتف / واتساب / العنوان)"
         file: "content/company.json"
         fields:
-          - label: "رقم الهاتف"
-            name: "phone"
-            widget: "string"
-          - label: "رقم واتساب"
-            name: "whatsapp"
-            widget: "string"
+          - { label: "رقم الهاتف (بصيغة دولية مثل +966504158234)", name: "phone", widget: "string" }
+          - { label: "الرقم كما يظهر للزوار (مثل 0504158234)", name: "phone_display", widget: "string", required: false }
+          - { label: "رقم واتساب (بدون + وبدون مسافات)", name: "whatsapp", widget: "string" }
+          - { label: "عنوان الصفحة الرئيسية", name: "hero_title", widget: "string", required: false }
+          - { label: "وصف الصفحة الرئيسية", name: "hero_text", widget: "text", required: false }
+          - { label: "نص أسفل كل الصفحات", name: "footer_text", widget: "string", required: false }
+          - label: "أرقام إضافية (اتصال / واتساب) تظهر في صفحة اتصل بنا"
+            name: "extra_contacts"
+            widget: "list"
+            required: false
+            summary: "{{fields.label}} - {{fields.number}}"
+            fields:
+              - { label: "الاسم (مثل: المبيعات)", name: "label", widget: "string" }
+              - { label: "الرقم (مثل +966501234567)", name: "number", widget: "string" }
+              - label: "النوع"
+                name: "type"
+                widget: "select"
+                default: "both"
+                options:
+                  - { label: "اتصال وواتساب", value: "both" }
+                  - { label: "اتصال فقط", value: "call" }
+                  - { label: "واتساب فقط", value: "wa" }
 
-  - name: "services"
-    label: "الخدمات والأسعار"
-    folder: "content/services"
-    create: true
-    extension: "json"
-    format: "json"
-    slug: "{{slug}}"
-    fields:
-      - label: "اسم الخدمة"
-        name: "title"
-        widget: "string"
-      - label: "وصف الخدمة"
-        name: "description"
-        widget: "text"
-      - label: "السعر"
-        name: "price"
-        widget: "string"
-        required: false
+      - name: "home"
+        label: "الصفحة الرئيسية (المميزات / الخطوات / المناطق / الصور)"
+        file: "content/home.json"
+        fields:
+          - { label: "عنوان قسم المميزات", name: "features_title", widget: "string", required: false }
+          - label: "المميزات"
+            name: "features"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - label: "الأيقونة"
+                name: "icon"
+                widget: "select"
+                default: "fa-star"
+                options:
+                  - { label: "شاحنة شفط", value: "fa-truck-monster" }
+                  - { label: "شاحنة", value: "fa-truck-fast" }
+                  - { label: "ساعة / سرعة", value: "fa-clock" }
+                  - { label: "أسعار", value: "fa-tags" }
+                  - { label: "مياه / مجاري", value: "fa-water" }
+                  - { label: "موقع", value: "fa-location-dot" }
+                  - { label: "اتصال", value: "fa-phone-volume" }
+                  - { label: "حماية / ضمان", value: "fa-shield-halved" }
+                  - { label: "نجمة / جودة", value: "fa-star" }
+                  - { label: "علامة صح", value: "fa-circle-check" }
+                  - { label: "دعم", value: "fa-headset" }
+                  - { label: "أدوات", value: "fa-screwdriver-wrench" }
+                  - { label: "اتفاق", value: "fa-handshake" }
+                  - { label: "تنظيف", value: "fa-broom" }
+              - { label: "العنوان", name: "title", widget: "string" }
+              - { label: "النص", name: "text", widget: "text" }
+          - { label: "عنوان قسم الخطوات", name: "steps_title", widget: "string", required: false }
+          - label: "خطوات طلب الخدمة"
+            name: "steps"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - label: "الأيقونة"
+                name: "icon"
+                widget: "select"
+                default: "fa-circle-check"
+                options:
+                  - { label: "شاحنة شفط", value: "fa-truck-monster" }
+                  - { label: "شاحنة", value: "fa-truck-fast" }
+[21/10/2026 09:46 ص] Nancy Adm: - { label: "ساعة / سرعة", value: "fa-clock" }
+                  - { label: "أسعار", value: "fa-tags" }
+                  - { label: "مياه / مجاري", value: "fa-water" }
+                  - { label: "موقع", value: "fa-location-dot" }
+                  - { label: "اتصال", value: "fa-phone-volume" }
+                  - { label: "حماية / ضمان", value: "fa-shield-halved" }
+                  - { label: "نجمة / جودة", value: "fa-star" }
+                  - { label: "علامة صح", value: "fa-circle-check" }
+                  - { label: "دعم", value: "fa-headset" }
+                  - { label: "أدوات", value: "fa-screwdriver-wrench" }
+                  - { label: "اتفاق", value: "fa-handshake" }
+                  - { label: "تنظيف", value: "fa-broom" }
+              - { label: "العنوان", name: "title", widget: "string" }
+              - { label: "النص", name: "text", widget: "text" }
+          - { label: "عنوان بطاقة المناطق", name: "areas_heading", widget: "string", required: false }
+          - { label: "المناطق (مثال: حائل • الغزالة)", name: "areas_text", widget: "string", required: false }
+          - { label: "ملاحظة المناطق", name: "areas_note", widget: "text", required: false }
+          - { label: "عنوان قسم السيارات", name: "trucks_title", widget: "string", required: false }
+          - label: "صور السيارات"
+            name: "trucks"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "الصورة", name: "image", widget: "image" }
+              - { label: "العنوان", name: "title", widget: "string" }
+          - { label: "عنوان قسم التواصل", name: "cta_title", widget: "string", required: false }
+          - { label: "نص قسم التواصل", name: "cta_text", widget: "text", required: false }
+
+      - name: "services"
+        label: "صفحة الخدمات والأسعار"
+        file: "content/services.json"
+        fields:
+          - { label: "عنوان الصفحة", name: "page_title", widget: "string", required: false }
+          - label: "الخدمات"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - label: "الأيقونة"
+                name: "icon"
+                widget: "select"
+                default: "fa-truck-fast"
+                options:
+                  - { label: "شاحنة شفط", value: "fa-truck-monster" }
+                  - { label: "شاحنة", value: "fa-truck-fast" }
+                  - { label: "ساعة / سرعة", value: "fa-clock" }
+                  - { label: "أسعار", value: "fa-tags" }
+                  - { label: "مياه / مجاري", value: "fa-water" }
+                  - { label: "موقع", value: "fa-location-dot" }
+                  - { label: "اتصال", value: "fa-phone-volume" }
+                  - { label: "حماية / ضمان", value: "fa-shield-halved" }
+                  - { label: "نجمة / جودة", value: "fa-star" }
+                  - { label: "علامة صح", value: "fa-circle-check" }
+                  - { label: "دعم", value: "fa-headset" }
+                  - { label: "أدوات", value: "fa-screwdriver-wrench" }
+                  - { label: "اتفاق", value: "fa-handshake" }
+                  - { label: "تنظيف", value: "fa-broom" }
+              - { label: "اسم الخدمة", name: "title", widget: "string" }
+              - { label: "وصف الخدمة", name: "description", widget: "text" }
+              - { label: "السعر (اختياري، مثل 150 ريال)", name: "price", widget: "string", required: false }
+          - { label: "عنوان بطاقة الطلب", name: "order_title", widget: "string", required: false }
+          - { label: "نص بطاقة الطلب", name: "order_text", widget: "text", required: false }
+
+      - name: "about"
+        label: "صفحة من نحن"
+        file: "content/about.json"
+        fields:
+          - { label: "عنوان الصفحة", name: "page_title", widget: "string", required: false }
+[21/10/2026 09:47 ص] Nancy Adm: backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+locale: "ar"
+
+collections:
+  - name: "site"
+    label: "محتوى الموقع"
+    files:
+
+      - name: "company"
+        label: "بيانات الشركة والصفحة الرئيسية (الهاتف / واتساب / العنوان)"
+        file: "content/company.json"
+        fields:
+          - { label: "رقم الهاتف (بصيغة دولية مثل +966504158234)", name: "phone", widget: "string" }
+          - { label: "الرقم كما يظهر للزوار (مثل 0504158234)", name: "phone_display", widget: "string", required: false }
+          - { label: "رقم واتساب (بدون + وبدون مسافات)", name: "whatsapp", widget: "string" }
+          - { label: "عنوان الصفحة الرئيسية", name: "hero_title", widget: "string", required: false }
+          - { label: "وصف الصفحة الرئيسية", name: "hero_text", widget: "text", required: false }
+          - { label: "نص أسفل كل الصفحات", name: "footer_text", widget: "string", required: false }
+          - label: "أرقام إضافية (اتصال / واتساب) تظهر في صفحة اتصل بنا"
+            name: "extra_contacts"
+            widget: "list"
+            required: false
+            summary: "{{fields.label}} - {{fields.number}}"
+            fields:
+              - { label: "الاسم (مثل: المبيعات)", name: "label", widget: "string" }
+              - { label: "الرقم (مثل +966501234567)", name: "number", widget: "string" }
+              - label: "النوع"
+                name: "type"
+                widget: "select"
+                default: "both"
+                options:
+                  - { label: "اتصال وواتساب", value: "both" }
+                  - { label: "اتصال فقط", value: "call" }
+                  - { label: "واتساب فقط", value: "wa" }
+
+      - name: "home"
+        label: "الصفحة الرئيسية (المميزات / الخطوات / المناطق / الصور)"
+        file: "content/home.json"
+        fields:
+          - { label: "عنوان قسم المميزات", name: "features_title", widget: "string", required: false }
+          - label: "المميزات"
+            name: "features"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - label: "الأيقونة"
+                name: "icon"
+                widget: "select"
+                default: "fa-star"
+                options:
+                  - { label: "شاحنة شفط", value: "fa-truck-monster" }
+                  - { label: "شاحنة", value: "fa-truck-fast" }
+                  - { label: "ساعة / سرعة", value: "fa-clock" }
+                  - { label: "أسعار", value: "fa-tags" }
+                  - { label: "مياه / مجاري", value: "fa-water" }
+                  - { label: "موقع", value: "fa-location-dot" }
+                  - { label: "اتصال", value: "fa-phone-volume" }
+                  - { label: "حماية / ضمان", value: "fa-shield-halved" }
+                  - { label: "نجمة / جودة", value: "fa-star" }
+                  - { label: "علامة صح", value: "fa-circle-check" }
+                  - { label: "دعم", value: "fa-headset" }
+                  - { label: "أدوات", value: "fa-screwdriver-wrench" }
+                  - { label: "اتفاق", value: "fa-handshake" }
+                  - { label: "تنظيف", value: "fa-broom" }
+              - { label: "العنوان", name: "title", widget: "string" }
+              - { label: "النص", name: "text", widget: "text" }
+          - { label: "عنوان قسم الخطوات", name: "steps_title", widget: "string", required: false }
+          - label: "خطوات طلب الخدمة"
+            name: "steps"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - label: "الأيقونة"
+                name: "icon"
+                widget: "select"
+                default: "fa-circle-check"
+                options:
+                  - { label: "شاحنة شفط", value: "fa-truck-monster" }
+                  - { label: "شاحنة", value: "fa-truck-fast" }
+[21/10/2026 09:47 ص] Nancy Adm: - { label: "ساعة / سرعة", value: "fa-clock" }
+                  - { label: "أسعار", value: "fa-tags" }
+                  - { label: "مياه / مجاري", value: "fa-water" }
+                  - { label: "موقع", value: "fa-location-dot" }
+                  - { label: "اتصال", value: "fa-phone-volume" }
+                  - { label: "حماية / ضمان", value: "fa-shield-halved" }
+                  - { label: "نجمة / جودة", value: "fa-star" }
+                  - { label: "علامة صح", value: "fa-circle-check" }
+                  - { label: "دعم", value: "fa-headset" }
+                  - { label: "أدوات", value: "fa-screwdriver-wrench" }
+                  - { label: "اتفاق", value: "fa-handshake" }
+                  - { label: "تنظيف", value: "fa-broom" }
+              - { label: "العنوان", name: "title", widget: "string" }
+              - { label: "النص", name: "text", widget: "text" }
+          - { label: "عنوان بطاقة المناطق", name: "areas_heading", widget: "string", required: false }
+          - { label: "المناطق (مثال: حائل • الغزالة)", name: "areas_text", widget: "string", required: false }
+          - { label: "ملاحظة المناطق", name: "areas_note", widget: "text", required: false }
+          - { label: "عنوان قسم السيارات", name: "trucks_title", widget: "string", required: false }
+          - label: "صور السيارات"
+            name: "trucks"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "الصورة", name: "image", widget: "image" }
+              - { label: "العنوان", name: "title", widget: "string" }
+          - { label: "عنوان قسم التواصل", name: "cta_title", widget: "string", required: false }
+          - { label: "نص قسم التواصل", name: "cta_text", widget: "text", required: false }
+
+      - name: "services"
+        label: "صفحة الخدمات والأسعار"
+        file: "content/services.json"
+        fields:
+          - { label: "عنوان الصفحة", name: "page_title", widget: "string", required: false }
+          - label: "الخدمات"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - label: "الأيقونة"
+                name: "icon"
+                widget: "select"
+                default: "fa-truck-fast"
+                options:
+                  - { label: "شاحنة شفط", value: "fa-truck-monster" }
+                  - { label: "شاحنة", value: "fa-truck-fast" }
+                  - { label: "ساعة / سرعة", value: "fa-clock" }
+                  - { label: "أسعار", value: "fa-tags" }
+                  - { label: "مياه / مجاري", value: "fa-water" }
+                  - { label: "موقع", value: "fa-location-dot" }
+                  - { label: "اتصال", value: "fa-phone-volume" }
+                  - { label: "حماية / ضمان", value: "fa-shield-halved" }
+                  - { label: "نجمة / جودة", value: "fa-star" }
+                  - { label: "علامة صح", value: "fa-circle-check" }
+                  - { label: "دعم", value: "fa-headset" }
+                  - { label: "أدوات", value: "fa-screwdriver-wrench" }
+                  - { label: "اتفاق", value: "fa-handshake" }
+                  - { label: "تنظيف", value: "fa-broom" }
+              - { label: "اسم الخدمة", name: "title", widget: "string" }
+              - { label: "وصف الخدمة", name: "description", widget: "text" }
+              - { label: "السعر (اختياري، مثل 150 ريال)", name: "price", widget: "string", required: false }
+          - { label: "عنوان بطاقة الطلب", name: "order_title", widget: "string", required: false }
+          - { label: "نص بطاقة الطلب", name: "order_text", widget: "text", required: false }
+
+      - name: "about"
+        label: "صفحة من نحن"
+        file: "content/about.json"
+        fields:
+          - { label: "عنوان الصفحة", name: "page_title", widget: "string", required: false }
+[21/10/2026 09:47 ص] Nancy Adm: - { label: "عنوان التعريف", name: "intro_title", widget: "string", required: false }
+          - { label: "نص التعريف", name: "intro_text", widget: "text", required: false }
+          - { label: "عنوان قسم المميزات", name: "reasons_title", widget: "string", required: false }
+          - { label: "المميزات (نقاط)", name: "reasons", widget: "list", field: { label: "النقطة", name: "text", widget: "string" } }
+          - { label: "عنوان قسم التواصل", name: "contact_title", widget: "string", required: false }
+          - { label: "نص قسم التواصل", name: "contact_text", widget: "text", required: false }
+
+      - name: "contact"
+        label: "صفحة اتصل بنا"
+        file: "content/contact.json"
+        fields:
+          - { label: "عنوان الصفحة", name: "page_title", widget: "string", required: false }
+          - { label: "عنوان المقدمة", name: "intro_title", widget: "string", required: false }
+          - { label: "نص المقدمة", name: "intro_text", widget: "text", required: false }
+          - { label: "عنوان منطقة الخدمة", name: "area_title", widget: "string", required: false }
+          - { label: "نص منطقة الخدمة", name: "area_text", widget: "text", required: false }
