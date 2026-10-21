@@ -1,4 +1,4 @@
-[21/10/2026 09:55 ص] Nancy Adm: backend:
+backend:
   name: git-gateway
   branch: main
 
@@ -83,7 +83,7 @@ collections:
                 options:
                   - { label: "شاحنة شفط", value: "fa-truck-monster" }
                   - { label: "شاحنة", value: "fa-truck-fast" }
-[21/10/2026 09:55 ص] Nancy Adm: - { label: "ساعة / سرعة", value: "fa-clock" }
+                  - { label: "ساعة / سرعة", value: "fa-clock" }
                   - { label: "أسعار", value: "fa-tags" }
                   - { label: "مياه / مجاري", value: "fa-water" }
                   - { label: "موقع", value: "fa-location-dot" }
@@ -151,7 +151,7 @@ collections:
         file: "content/about.json"
         fields:
           - { label: "عنوان الصفحة", name: "page_title", widget: "string", required: false }
-[21/10/2026 09:55 ص] Nancy Adm: - { label: "عنوان التعريف", name: "intro_title", widget: "string", required: false }
+          - { label: "عنوان التعريف", name: "intro_title", widget: "string", required: false }
           - { label: "نص التعريف", name: "intro_text", widget: "text", required: false }
           - { label: "عنوان قسم المميزات", name: "reasons_title", widget: "string", required: false }
           - { label: "المميزات (نقاط)", name: "reasons", widget: "list", field: { label: "النقطة", name: "text", widget: "string" } }
