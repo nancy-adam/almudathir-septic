@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +6,7 @@
     <meta name="description" content="تعرف على شركة المدثر لشفط البيارات وتسليك المجاري في حائل">
     <title>من نحن | شركة المدثر</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="extra.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -23,19 +24,17 @@
     </header>
 
     <main class="container">
-        <h1 class="page-title">من نحن</h1>
+        <h1 class="page-title" data-bind="about.page_title">من نحن</h1>
 
         <section class="card">
-            <h2>شركة المدثر لشفط البيارات</h2>
-            <p>
-                نقدم خدمات شفط البيارات وتسليك المجاري في حائل والمناطق المحيطة بها.
-                هدفنا توفير خدمة مناسبة للعملاء، مع الاهتمام بالنظافة وجودة العمل.
-            </p>
+            <h2 data-bind="about.intro_title">شركة المدثر لشفط البيارات</h2>
+            <p class="pre" data-bind="about.intro_text">نقدم خدمات شفط البيارات وتسليك المجاري في حائل والمناطق المحيطة بها.
+هدفنا توفير خدمة مناسبة للعملاء، مع الاهتمام بالنظافة وجودة العمل.</p>
         </section>
 
         <section class="card">
-            <h2>لماذا تختار شركة المدثر؟</h2>
-            <ul>
+            <h2 data-bind="about.reasons_title">لماذا تختار شركة المدثر؟</h2>
+            <ul data-list="about.reasons" data-render="bullets">
                 <li>سيارات مخصصة لأعمال شفط البيارات.</li>
                 <li>الاهتمام باحتياجات العميل.</li>
                 <li>التواصل المباشر لتحديد الخدمة المطلوبة.</li>
@@ -44,10 +43,10 @@
         </section>
 
         <section class="card">
-            <h2>تواصل معنا</h2>
-            <p>اتصل بنا للاستفسار عن الخدمة والتغطية المتاحة.</p>
+            <h2 data-bind="about.contact_title">تواصل معنا</h2>
+            <p class="pre" data-bind="about.contact_text">اتصل بنا للاستفسار عن الخدمة والتغطية المتاحة.</p>
             <a class="btn call-btn" href="tel:+966504158234">
-                <i class="fas fa-phone"></i> 0504158234
+                <i class="fas fa-phone"></i> <span data-phone>0504158234</span>
             </a>
         </section>
     </main>
@@ -62,8 +61,10 @@
     </div>
 
     <footer>
-        <p>© 2026 شركة المدثر - جميع الحقوق محفوظة</p>
+        <p data-bind="company.footer_text">© 2026 شركة المدثر - جميع الحقوق محفوظة</p>
     </footer>
+
+    <script src="site-data.js" defer></script>
 
 </body>
 </html>
