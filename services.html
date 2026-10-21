@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +6,7 @@
     <meta name="description" content="خدمات شفط البيارات وتسليك المجاري في حائل من شركة المدثر">
     <title>خدماتنا | شركة المدثر</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="extra.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -23,39 +24,31 @@
     </header>
 
     <main class="container">
-        <h1 class="page-title">خدماتنا</h1>
+        <h1 class="page-title" data-bind="services.page_title">خدماتنا</h1>
 
-        <div class="card-grid">
+        <div class="card-grid" data-list="services.items" data-render="services">
             <section class="card">
                 <i class="fas fa-truck-fast"></i>
                 <h2>شفط البيارات</h2>
-                <p>
-                    خدمة شفط البيارات باستخدام سيارات مخصصة، حسب طبيعة الموقع
-                    واحتياجات العميل.
-                </p>
+                <p class="pre">خدمة شفط البيارات باستخدام سيارات مخصصة، حسب طبيعة الموقع واحتياجات العميل.</p>
             </section>
 
             <section class="card">
                 <i class="fas fa-water"></i>
                 <h2>تسليك المجاري</h2>
-                <p>
-                    المساعدة في معالجة انسدادات المجاري، بعد معرفة المشكلة
-                    وتحديد الخدمة المناسبة.
-                </p>
+                <p class="pre">المساعدة في معالجة انسدادات المجاري، بعد معرفة المشكلة وتحديد الخدمة المناسبة.</p>
             </section>
 
             <section class="card">
                 <i class="fas fa-location-dot"></i>
                 <h2>خدمة حائل والمناطق المحيطة</h2>
-                <p>
-                    اتصل بنا للتأكد من إمكانية الوصول إلى موقعك وتحديد موعد الخدمة.
-                </p>
+                <p class="pre">اتصل بنا للتأكد من إمكانية الوصول إلى موقعك وتحديد موعد الخدمة.</p>
             </section>
         </div>
 
         <section class="card">
-            <h2>اطلب الخدمة</h2>
-            <p>للاستفسار عن الأسعار أو طلب الخدمة، تواصل معنا مباشرة.</p>
+            <h2 data-bind="services.order_title">اطلب الخدمة</h2>
+            <p class="pre" data-bind="services.order_text">للاستفسار عن الأسعار أو طلب الخدمة، تواصل معنا مباشرة.</p>
             <a class="btn call-btn" href="tel:+966504158234">
                 <i class="fas fa-phone"></i> اتصل الآن
             </a>
@@ -75,8 +68,10 @@
     </div>
 
     <footer>
-        <p>© 2026 شركة المدثر - جميع الحقوق محفوظة</p>
+        <p data-bind="company.footer_text">© 2026 شركة المدثر - جميع الحقوق محفوظة</p>
     </footer>
+
+    <script src="site-data.js" defer></script>
 
 </body>
 </html>
